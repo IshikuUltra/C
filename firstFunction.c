@@ -12,7 +12,7 @@ int main(void)
         scores[i] = printf("Enter a score: "); 
         scanf("%d", &s); //why does program not stop asking for input after n loops?
     };
-    printf("Average: %f", average(n, scores));
+    printf("Average: %f.2", average(n, scores));
     return 0; //might need to take this out
 }
 
@@ -22,5 +22,5 @@ float average(int length, int array[])
     for (int i=0; i < length; i++){
         sum += array[i];
     }
-    return (float) sum / (float) length; //casting, technically dont need to cast both. 
+    return sum / length; //casting, technically dont need to cast both. 
 }
