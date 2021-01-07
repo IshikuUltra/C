@@ -1,42 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Represents a node;
-typedef struct node
+
+typedef struct sllnode // struct sllnode is temporary var
 {
     int number;
-    struct node *next;
-} node;
+    struct sllnode *next;
+} node; // node is the permanant name
 
 
 int main(void) 
 {
     
     node *list = NULL;
-    
-    node *n = malloc(sizeof(node));
-    if (n == NULL) {
-        return 1;
-    };
-    n->number = 1; // the "->" syntax is sugar for "n.number";
-    n->next = NULL;
-    list = n;
+    node *newNode = malloc(sizeof(node)); // allocate memory to instantiate a node
 
-    n = malloc(sizeof(node));
-    if(n == NULL) {
-        return 1;
-    };
-    n->number = 2;
-    n->next = NULL;
-    list->next = n;
+    int push (int data) { // formal parameter, created on read and destroyed on exit.
+        if (newNode == NULL) {
+            return 1;
+        };
 
-    n = malloc(sizeof(node));
-    if(n == NULL) {
-        return 1;
+        newNode->number = data; // can i read vars scoped outside of this function?
+        newNode->next = NULL;
+        list = newNode;
     };
-    n->number = 3;
-    n->next = NULL;
-    list->next->next = n;
+
+    push(1);
+    push(2)
 
     for(node *tmp = list; tmp != NULL; tmp = tmp->next) {
         printf("%i\n",tmp->number);
